@@ -14,6 +14,12 @@ extension UIViewController {
         let bundle = Bundle(for: T.self)
         return T(nibName: "\(self)", bundle: bundle)
     }
+    
+    func showAlert(title: String, message: String) {
+        let alertViewController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertViewController.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
+        present(alertViewController, animated: true, completion: nil)
+    }
 }
 
 extension MKAnnotationView {

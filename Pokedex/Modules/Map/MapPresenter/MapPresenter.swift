@@ -7,20 +7,41 @@
 
 import Foundation
 
-class MapPresenter: MapPresenterProtocol {
+final class MapPresenter: MapPresenterProtocol {
     weak var view: MapViewProtocol?
     var interactor: MapInteractorProtocol?
     var router: MapRouterProtocol?
+    
+    var timer: Timer?
+    var isGPS = true {
+        didSet {
+            guard !isGPS else {
+                timer?.invalidate()
+                return
+            }
+            timer = Timer.scheduledTimer(timeInterval: secondsToRepeat, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
+        }
+    }
+    
+    let secondsToRepeat = 30.0
     
     func getRandomPokemon() {
         interactor?.fetchRandomPokemon()
     }
     
     func successGet(pokemon: Pokemon) {
-        view?.show(pokemon: pokemon)
+        var distance = 0.0
+        if !isGPS {
+            distance = Double.random(in: 0..<2000)
+        }
+        view?.show(pokemon: pokemon, with: distance)
     }
     
-    func failureFetch() {
-        
+    func failureFetch(with error: Error) {
+        view?.showAlert(with: error)
+    }
+    
+    @objc func fireTimer() {
+        getRandomPokemon()
     }
 }

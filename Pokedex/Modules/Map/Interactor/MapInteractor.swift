@@ -9,9 +9,13 @@ import Foundation
 import PokemonAPI
 import Combine
 
-class MapInteractor: MapInteractorProtocol {
+enum MapInteractorError: Error {
+    case notFound
+}
+
+final class MapInteractor: MapInteractorProtocol {
     var presenter: MapPresenterProtocol?
-    private let tolaPokemons = 100
+    private let tolaPokemons = 800
     
     func fetchRandomPokemon() {
         PokemonAPI().pokemonService.fetchPokemon(Int.random(in: 1..<tolaPokemons)) { result in
@@ -19,12 +23,12 @@ class MapInteractor: MapInteractorProtocol {
             case .success(let pokemon):
                 debugPrint(pokemon)
                 guard let name = pokemon.name, let image = pokemon.sprites?.frontDefault, let imageURL = URL(string: image) else {
-                    self.presenter?.failureFetch()
+                    self.presenter?.failureFetch(with: MapInteractorError.notFound)
                     return
                 }
                 self.presenter?.successGet(pokemon: Pokemon(name: name, image: imageURL))
             case .failure(let error):
-                debugPrint(error)
+                self.presenter?.failureFetch(with: error)
             }
         }
     }

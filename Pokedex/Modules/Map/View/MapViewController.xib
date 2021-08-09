@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="fetchPokemonButton" destination="Z4n-MJ-bCe" id="QFm-pe-PXX"/>
                 <outlet property="map" destination="PeK-DI-KAH" id="D0F-Ca-g99"/>
+                <outlet property="segmentedControl" destination="NGf-6l-cP3" id="uQf-Wx-sgF"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -48,6 +49,17 @@
                         <action selector="fetchPokemon:" destination="-1" eventType="touchUpInside" id="DBo-vS-AXW"/>
                     </connections>
                 </button>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="NGf-6l-cP3">
+                    <rect key="frame" x="142" y="79" width="131" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <segments>
+                        <segment title="GPS"/>
+                        <segment title="Tiempo"/>
+                    </segments>
+                    <connections>
+                        <action selector="segmentedControlChanged:" destination="-1" eventType="valueChanged" id="9th-tn-qfz"/>
+                    </connections>
+                </segmentedControl>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>

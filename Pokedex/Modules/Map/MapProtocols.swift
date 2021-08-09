@@ -13,9 +13,10 @@ protocol MapRouterProtocol: AnyObject {
 }
 
 protocol MapPresenterProtocol: AnyObject {
+    var isGPS: Bool { get set }
     func getRandomPokemon()
     func successGet(pokemon: Pokemon)
-    func failureFetch()
+    func failureFetch(with error: Error)
 }
 
 protocol MapInteractorProtocol: AnyObject {
@@ -23,7 +24,8 @@ protocol MapInteractorProtocol: AnyObject {
 }
 
 protocol MapViewProtocol: AnyObject {
-    func show(pokemon: Pokemon)
+    func show(pokemon: Pokemon, with distanceToLocation: Double)
+    func showAlert(with error: Error) 
 }
 
 struct Pokemon {

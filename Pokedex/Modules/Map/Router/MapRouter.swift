@@ -7,6 +7,6 @@
 
 import UIKit
 
-class MapRouter: MapRouterProtocol {
+final class MapRouter: MapRouterProtocol {
     var view: UIViewController?
 }

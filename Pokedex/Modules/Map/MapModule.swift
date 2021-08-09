@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MapModule {
+final class MapModule {
 
     static func build() -> UIViewController {
         let view: MapViewController = MapViewController.loadXib()
