@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapViewController" customModule="Pokedex" customModuleProvider="target">
+            <connections>
+                <outlet property="fetchPokemonButton" destination="Z4n-MJ-bCe" id="QFm-pe-PXX"/>
+                <outlet property="map" destination="PeK-DI-KAH" id="D0F-Ca-g99"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="PeK-DI-KAH">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                </mapView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FzS-OG-d7N">
+                    <rect key="frame" x="340" y="762" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="cfj-pm-cte"/>
+                        <constraint firstAttribute="width" constant="44" id="o2N-MO-WOx"/>
+                    </constraints>
+                    <state key="normal" image="locate"/>
+                    <connections>
+                        <action selector="fetchLocation:" destination="-1" eventType="touchUpInside" id="t1g-b2-s0Q"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z4n-MJ-bCe">
+                    <rect key="frame" x="122" y="764.5" width="170" height="39"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="170" id="Rg1-Oe-WIv"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <state key="normal" title="Pokemón al azar">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="fetchPokemon:" destination="-1" eventType="touchUpInside" id="DBo-vS-AXW"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="Z4n-MJ-bCe" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="0rw-oa-wbS"/>
+                <constraint firstAttribute="bottom" secondItem="PeK-DI-KAH" secondAttribute="bottom" id="84m-cz-xXk"/>
+                <constraint firstItem="PeK-DI-KAH" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Fs2-4j-qV7"/>
+                <constraint firstItem="PeK-DI-KAH" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="G6u-aD-nIg"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="PeK-DI-KAH" secondAttribute="trailing" id="YY7-fz-Yb6"/>
+                <constraint firstItem="Z4n-MJ-bCe" firstAttribute="centerY" secondItem="FzS-OG-d7N" secondAttribute="centerY" id="YdC-uP-dLt"/>
+                <constraint firstAttribute="trailing" secondItem="FzS-OG-d7N" secondAttribute="trailing" constant="30" id="dyd-TP-Dg0"/>
+                <constraint firstAttribute="bottom" secondItem="FzS-OG-d7N" secondAttribute="bottom" constant="90" id="hEu-7v-M76"/>
+            </constraints>
+            <point key="canvasLocation" x="26" y="109"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="locate" width="256" height="256"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
